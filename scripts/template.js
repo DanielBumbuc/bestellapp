@@ -19,14 +19,15 @@ function getDishName(dishIndex) {
     return dishName;
 }
 
-function getCartDishes(cartDishIndex) {    
+function getCartDishes(cartDishIndex) {
+        
     let cartDishes = `<div class="my-current-cart">
                 <p>${cartDishesArr[cartDishIndex].name}</p>
                 <p>${cartDishesArr[cartDishIndex].price}</p>
                 <div>
-                    <img onclick="calcMinusAmount()" class="minus-button" id="minus" src="./assets/icons/icons8-minus-64.png" alt="minus-button">
-                    <span id="dish_amount">1</span>
-                    <img onclick="calcPlusAmount()" id="plus" class="plus-button" src="./assets/icons/icons8-hinzufügen-50.png" alt="plus-button">
+                    <img onclick="calcMinusAmount(${cartDishIndex})" class="minus-button" id="minus${cartDishIndex}" src="./assets/icons/icons8-minus-64.png" alt="minus-button">
+                    <span id="dish_amount${cartDishIndex}">${cartDishesArr[cartDishIndex].amount}</span>
+                    <img onclick="calcPlusAmount(${cartDishIndex})" id="plus" class="plus-button" src="./assets/icons/icons8-hinzufügen-50.png" alt="plus-button">
                     <img onclick="deleteCart(${cartDishIndex})" src="./assets/icons/icons8-delete-48.png" alt="delete">
                 </div>
             </div>`;

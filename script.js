@@ -20,42 +20,64 @@ function renderDishName(categoryIndex) {
 function addDish(categoryIndex, dishIndex) {
     let myDishName = document.getElementById(categoryIndex + 'dish_name' + dishIndex).innerHTML;
     let myDishPrice = document.getElementById(categoryIndex + 'dish_price' + dishIndex).innerHTML;
-    cartDishesArr.push({ 'name': myDishName, 'price': myDishPrice });
-    renderCartDishes();
-}
-
-function renderCartDishes() {
-    let cartContainer = document.getElementById('cart_container');
-    cartContainer.innerHTML = '';
-    for (cartDishIndex = 0; cartDishIndex < cartDishesArr.length; cartDishIndex++) {
-        cartContainer.innerHTML += getCartDishes(cartDishIndex);
+    if (dishes[categoryIndex].dish[dishIndex].selected == true) {
+        renderCartDishes(categoryIndex, dishIndex);
+        return;
+    } if (dishes[categoryIndex].dish[dishIndex].selected == false) {
+        cartDishesArr.push({ 'name': myDishName, 'price': myDishPrice, 'amount' : 1, 'selected' : false, 'categoryIndex' : categoryIndex, 'dishIndex' : dishIndex});
+        renderCartDishes(categoryIndex, dishIndex);
     }
 }
 
-function calcPlusAmount() {
-    let dishAmount = +document.getElementById('dish_amount').innerHTML;
-    let plusAmount = dishAmount + 1;
-    let amountValue = document.getElementById('dish_amount');
-    amountValue.innerHTML = plusAmount;
+function renderCartDishes(categoryIndex, dishIndex) {
+    let cartContainer = document.getElementById('cart_container');
+    cartContainer.innerHTML = '';
+    console.log(cartDishesArr);
+    for (cartDishIndex = 0; cartDishIndex < cartDishesArr.length; cartDishIndex++) {
+        if (dishes[categoryIndex].dish[dishIndex].selected == true) {
+            cartContainer.innerHTML += getCartDishes(cartDishIndex);
+            calcPlusAmount(cartDishIndex);
+            return;
+        } if (dishes[categoryIndex].dish[dishIndex].selected == false) {  
+            cartContainer.innerHTML += getCartDishes(cartDishIndex);
+            dishes[categoryIndex].dish[dishIndex].selected = true;
+        } 
+    }
+    
+    
+    console.log(dishes[categoryIndex].dish[dishIndex].selected);
 }
 
-function calcMinusAmount() {
-    let dishAmount = +document.getElementById('dish_amount').innerHTML;
+function calcPlusAmount(cartDishIndex) {
+    let dishAmount = cartDishesArr[cartDishIndex].amount;
+    let plusAmount = dishAmount + 1;
+    let amountValue = document.getElementById('dish_amount' + cartDishIndex);
+    amountValue.innerHTML = plusAmount;
+    cartDishesArr[cartDishIndex].amount = plusAmount;
+}
+
+function calcMinusAmount(cartDishIndex) {
+    let dishAmount = cartDishesArr[cartDishIndex].amount;
     let minusAmount = dishAmount - 1;
-    let amountValue = document.getElementById('dish_amount');
+    let amountValue = document.getElementById('dish_amount' + cartDishIndex);
     amountValue.innerHTML = minusAmount;
+    cartDishesArr[cartDishIndex].amount = minusAmount;
     if (amountValue.innerHTML < 1) {
-        delete cartDishes.name;
+        deleteCart(cartDishIndex);  
     }
 
 }
 
 function deleteCart(cartDishIndex) {
-    cartDishesArr.splice(cartDishIndex, 1);
-    renderCartDishes();
     console.log(cartDishesArr);
-
+    let categoryIndex = cartDishesArr[cartDishIndex].categoryIndex;
+    let dishIndex = cartDishesArr[cartDishIndex].dishIndex;
+    cartDishesArr.splice(cartDishIndex, 1);
+    dishes[categoryIndex].dish[dishIndex].selected = false;
+    renderCartDishes(categoryIndex, dishIndex)
+    console.log(cartDishesArr);
 }
+
 
 // if amount < 1 delete from cart
 // delete complete dish button
