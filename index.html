@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/legal.css">
     <link rel="stylesheet" href="./styles/button.css">
-    
+    <link rel="stylesheet" href="./styles/img.css">
+    <link rel="stylesheet" href="./styles/menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="./styles/scrollbar.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
     <script src="script.js"></script>
     <script src="./scripts/object.js"></script>
     <script src="./scripts/template.js"></script>
@@ -16,24 +23,76 @@
 </head>
 
 <body onload="init()">
-
     <nav>
         <a href="./index.html" class="logo-link"><img class="logo-img" src="./assets/Logo/Logo.png" alt="logo"></a>
-        <div class="menu">
-            <a href="#">Menü1</a>
-            <a href="#">Menü2</a>
-            <a href="#">Menü3</a>
-            <a href="#">Menü4</a>
+
+        <div class="right-content">
+            <div class="basket">
+                <img onclick="responsiveToggleBasket()" class="basket-img" src="./assets/icons/icons8-basket-48.png" alt="basket">
+            </div>
+    
+            <div class="navbar">
+                <div class="container nav-container">
+                    <input onclick="togglePosition('main')" id="checkbox" class="checkbox" type="checkbox" name="" id="" />
+                    <div class="hamburger-lines">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </div>
+                    <div class="menu-items">
+                        <li><a href="#dish_category0">Vorspeisen</a></li>
+                        <li><a href="#dish_category1">Hauptspeisen</a></li>
+                        <li><a href="#dish_category2">Beilagen</a></li>
+                        <li><a href="#dish_category3">Nachtisch</a></li>
+                        <li><a href="#dish_category4">Getränke</a></li>
+                        <span class="gap"></span>
+                        <li><a href="./impressum.html">Impressum</a></li>
+                        <li><a href="./datenschutz.html">Datneschutz</a></li>
+                    </div>
+                </div>
+            </div>
         </div>
+    
     </nav>
 
     <section class="main-section fill">
-        <div id="order_container">                    
+
+        <span></span>
+
+        <div id="order_container">
+            <h1>Mein Restaurant</h1>
         </div>
 
-        <div id="cart_container" class="cart-container">
-            
+        <div id="cart_style" class="cart-style show hidden-cart">
+
+            <div id="delivery_section" class="delivery-section show">
+                <h2>Warenkorb</h2>
+                <p id="cart_placeholder">Füge ein paar leckere Gerichte hinzu und bestelle dir dein Essen</p>
+                <form class="form"></form>
+                <div id="delivery_button" class="switch-field d-none">
+                    <input onclick="setPrice()" type="radio" id="delivery" name="switch-one" value="Lieferung"
+                        checked />
+                    <label for="delivery">Lieferung</label>
+                    <input onclick="setPrice()" type="radio" id="pickup" name="switch-one" value="Abholung" />
+                    <label for="pickup">Abholung</label>
+                </div>
+                </form>
+            </div>
+
+            <div id="cart_section" class="cart-section d-none">
+                <div id="cart_container" class="cart-container"></div>
+            </div>
+
+            <div class="order-section">
+                <div id="my_cart_price" class="my-cart-price"></div>
+                <button id="order_btn" type="button"><a href="./order.html">Bestellen</a></button>
+            </div>
+
+
+
         </div>
+
+
     </section>
 
 

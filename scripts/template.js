@@ -1,6 +1,7 @@
 function getDishCategory(categoryIndex) {
-    let dishCategory = `<div id="dish_category${[categoryIndex]}">
-        <h1>${dishes[categoryIndex].categoryName}</h1>
+    let dishCategory = `<div id="dish_category${[categoryIndex]}" class="dish-categorys">
+        <img class="category-img" src="./assets/img/img${categoryIndex}.jpg" alt="">
+        <h2>${dishes[0].dishArr[categoryIndex].categoryName}</h2>
     </div>`;
     return dishCategory;
 }
@@ -8,29 +9,37 @@ function getDishCategory(categoryIndex) {
 function getDishName(dishIndex) {
     let dishName = `<div id="${categoryIndex}all_dishes${dishIndex}" class="all-dishes">
         <div id="my_dish_id${dishIndex}">
-            <p id="${categoryIndex}dish_name${dishIndex}">${dishes[categoryIndex].dish[dishIndex].name}</p>
-            <p id="dish_ingredients${dishIndex}">${dishes[categoryIndex].dish[dishIndex].ingredients}</p>
-            <p id="${categoryIndex}dish_price${dishIndex}">${dishes[categoryIndex].dish[dishIndex].price}</p>
+            <p id="${categoryIndex}dish_name${dishIndex}">${dishes[0].dishArr[categoryIndex].dish[dishIndex].name}</p>
+            <p id="dish_ingredients${dishIndex}">${dishes[0].dishArr[categoryIndex].dish[dishIndex].ingredients}</p>
+            <p id="${categoryIndex}dish_price${dishIndex}">${dishes[0].dishArr[categoryIndex].dish[dishIndex].price}€</p>
         </div>
         <div>
-            <img onclick="addDish(${categoryIndex}, ${dishIndex})" class="add-button" src="./assets/icons/icons8-hinzufügen-50.png" alt="add-button">
+            <span onclick="addDish(${categoryIndex}, ${dishIndex})" class="add-button"></span>
+            
         </div>
     </div>`
     return dishName;
 }
 
-function getCartDishes(cartDishIndex) {
-        
-    let cartDishes = `<div class="my-current-cart">
-                <p>${cartDishesArr[cartDishIndex].name}</p>
-                <p>${cartDishesArr[cartDishIndex].price}</p>
-                <div>
-                    <img onclick="calcMinusAmount(${cartDishIndex})" class="minus-button" id="minus${cartDishIndex}" src="./assets/icons/icons8-minus-64.png" alt="minus-button">
-                    <span id="dish_amount${cartDishIndex}">${cartDishesArr[cartDishIndex].amount}</span>
-                    <img onclick="calcPlusAmount(${cartDishIndex})" id="plus" class="plus-button" src="./assets/icons/icons8-hinzufügen-50.png" alt="plus-button">
-                    <img onclick="deleteCart(${cartDishIndex})" src="./assets/icons/icons8-delete-48.png" alt="delete">
+function getCartDishes(categoryIndex, dishIndex, cartArrIndex) {
+    let cartDishes = `<div id="my_selected_dish${categoryIndex}" class="my-selected-dish">
+                    <p class="delivery-text">${dishes[0].cartArr[cartArrIndex].name}</p>
+                    <p class="delivery-text">${dishes[0].cartArr[cartArrIndex].price}</p>
+                <div class="icons">
+                    <span onclick="calcMinusAmount(${cartArrIndex})" class="minus-button" id="minus"></span>
+                    <span id="dish_amount${cartArrIndex}">${dishes[0].cartArr[cartArrIndex].amount}</span>
+                    <span onclick="calcPlusAmount(${cartArrIndex})" id="plus${categoryIndex + dishIndex}" class="plus-button"></span>
+                    <span onclick="deleteCart(${cartArrIndex})" class="trash-button"></span>
                 </div>
             </div>`;
 
     return cartDishes
 }
+
+function getCartPrice() {
+    let cartDishPrice = `<div id="cart_price"><p id="delivery_price">Lieferkosten: </p>
+                <p id="total_price">Gesamtkosten: </p></div>`;
+
+    return cartDishPrice
+}
+

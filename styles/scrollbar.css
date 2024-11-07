@@ -1,0 +1,28 @@
+
+.cart-section {
+    --sb-track-color: #ffffff;
+    --sb-thumb-color: #FF8000;
+    --sb-size: 7px;
+  }
+  
+  .cart-section::-webkit-scrollbar {
+    width: var(--sb-size)
+  }
+  
+  .cart-section::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 5px;
+  }
+  
+  .cart-section::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 5px;
+    
+  }
+  
+  @supports not selector(::-webkit-scrollbar) {
+    .cart-section {
+      scrollbar-color: var(--sb-thumb-color)
+                       var(--sb-track-color);
+    }
+  }

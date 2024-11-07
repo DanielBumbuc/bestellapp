@@ -1,11 +1,125 @@
 .add-button {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    background-image: url(../assets/icons/icons8-plus-black.png);
+    background-size: cover;
     width: 30px;
+    height: 30px;
+}
+
+.add-button:hover {
+    background-image: url(../assets/icons/icons8-plus-orange.png);
 }
 
 .minus-button {
-    width: 30px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    background-image: url(../assets/icons/icons8-minus-black.png);
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+}
+
+.minus-button:hover {
+    background-image: url(../assets/icons/icons8-minus-orange.png);
 }
 
 .plus-button {
-    width: 30px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    background-image: url(../assets/icons/icons8-plus-black.png);
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+}
+
+.plus-button:hover {
+    background-image: url(../assets/icons/icons8-plus-orange.png);
+}
+
+.trash-button {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    background-image: url(../assets/icons/icons8-trash-black.png);
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+}
+
+.trash-button:hover {
+    background-image: url(../assets/icons/icons8-trash-red.png);
+}
+
+#order_btn {
+    position: absolute;
+    bottom: 20px;
+    background-color: #FF8000;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 16px;
+    padding: 10px 32px;
+}
+
+#order_btn:hover {
+    background-color: #ff952a;
+}
+
+#order_btn a {
+    color: white;
+    text-decoration: none;
+}
+
+#order_btn a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.switch-field {
+    display: flex;
+    justify-content: center;
+}
+
+.switch-field input {
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.switch-field label {
+    background-color: #e4e4e4;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    padding: 10px 32px;
+    margin-right: -1px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.1s ease-in-out;
+}
+
+.switch-field label:hover {
+    cursor: pointer;
+}
+
+.switch-field input:checked+label {
+    background-color: white;
+    color: #FF8000;
+    font-weight: bold;
+    box-shadow: none;
+}
+
+.switch-field label:first-of-type {
+    border-radius: 16px 0 0 16px;
+}
+
+.switch-field label:last-of-type {
+    border-radius: 0 16px 16px 0;
 }

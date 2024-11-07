@@ -1,0 +1,41 @@
+.category-img {
+    width: 500px;
+    height: 100px;
+    object-fit: cover;
+    margin-top: 48px;
+    border-radius: 8px;
+}
+
+.icons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+
+.minus-button {
+    width: 24px;
+    cursor: pointer;
+}
+
+.plus-button {
+    width: 24px;
+    cursor: pointer;
+}
+
+.trash-button {
+    width: 24px;
+    cursor: pointer;
+}
+
+.minus-button:hover {
+    src: url(../);
+}
+
+.plus-button {
+    width: 24px;
+}
+
+.trash-button {
+    width: 24px;
+}
