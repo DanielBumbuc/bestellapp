@@ -11,7 +11,7 @@ function getDishName(dishIndex) {
         <div id="my_dish_id${dishIndex}">
             <p id="${categoryIndex}dish_name${dishIndex}">${dishes[0].dishArr[categoryIndex].dish[dishIndex].name}</p>
             <p id="dish_ingredients${dishIndex}">${dishes[0].dishArr[categoryIndex].dish[dishIndex].ingredients}</p>
-            <p id="${categoryIndex}dish_price${dishIndex}">${dishes[0].dishArr[categoryIndex].dish[dishIndex].price}€</p>
+            <p id="${categoryIndex}dish_price${dishIndex}">${dishes[0].dishArr[categoryIndex].dish[dishIndex].price.toFixed(2)}€</p>
         </div>
         <div>
             <span onclick="addDish(${categoryIndex}, ${dishIndex})" class="add-button"></span>
